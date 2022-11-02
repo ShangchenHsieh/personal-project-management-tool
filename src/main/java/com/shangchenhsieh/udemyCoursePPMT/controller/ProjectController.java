@@ -1,6 +1,7 @@
 package com.shangchenhsieh.udemyCoursePPMT.controller;
 
 import com.shangchenhsieh.udemyCoursePPMT.domain.Project;
+import com.shangchenhsieh.udemyCoursePPMT.services.MapValidationErrorService;
 import com.shangchenhsieh.udemyCoursePPMT.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -23,10 +26,15 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private MapValidationErrorService mapValidationErrorService;
+
     @PostMapping("")
     public ResponseEntity<?> createNewProject(@RequestBody @Valid Project project, BindingResult result) {
-        if(result.hasErrors()) {
-            return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
+
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if (errorMap != null) {
+            return errorMap;
         }
 
         Project project1 = projectService.saveOrUpdateProject(project);
