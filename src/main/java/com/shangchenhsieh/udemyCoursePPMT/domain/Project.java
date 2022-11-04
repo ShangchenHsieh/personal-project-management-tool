@@ -22,7 +22,8 @@ public class Project {
     @Size(min = 4, max = 5, message = "Please use 4 or 5 characters")
     @Column(updatable = false, unique = true)
     //the unique constrain happens after the MpaValidationErrorService, and it happens on the DB-level
-
+    //so when sending a POST request with the same projectIdentifier wouldn't be checked
+    //as a result, exception handling is needed here
     private String projectIdentifier;
 
     @NotBlank(message = "Project description is required")
