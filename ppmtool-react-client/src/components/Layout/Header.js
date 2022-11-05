@@ -8,14 +8,13 @@ class Header extends Component {
             <a className="navbar-brand" href="Dashboard.html">
               Peronsal Project Management Tool
             </a>
-            
 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
               <span className="navbar-toggler-icon" />
             </button>
             
 
-            <div className="collapse navbar-college" id="mobile-nav">
+            
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <a className="nav-link" href="/dashboard">
@@ -39,7 +38,7 @@ class Header extends Component {
                 </li>
 
               </ul>
-            </div>
+            
         </div>
       </nav>
     )
