@@ -12,11 +12,9 @@ class Header extends Component {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
               <span className="navbar-toggler-icon" />
             </button>
-            
 
-            
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
+              <ul className="navbar-nav mr-auto" >
+                <li className="nav-item" >
                   <a className="nav-link" href="/dashboard">
                     Dashboard
                   </a>
