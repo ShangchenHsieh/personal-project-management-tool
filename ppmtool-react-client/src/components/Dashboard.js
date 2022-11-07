@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
-import Header from './Layout/Header';
+import CreateProjectButton from './Projects/CreateProjectButton';
 import Projectitem from './Projects/Projectitem';
 class Dashboard extends Component {
   render() {
     return (
         <div className="projects">
-          <Header/>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
                 <h1 className="display-4 text-center">Projects</h1>
                 <br />
-                <a href="ProjectForm.html" className="btn btn-primary">
-                  Create a Project
-                </a>
+                <CreateProjectButton />
                 <br />
                 <hr />
                 <Projectitem />
