@@ -31,8 +31,7 @@ class Projectitem extends Component {
                             <li className="list-group-item delete">
                               <i className="fa fa-minus-circle pr-1">Delete Project</i>
                             </li>
-                          </a>
-
+                          </a>  
                         </ul>
                       </div>
                     </div>
