@@ -8,14 +8,14 @@ import PropTypes from "prop-types"
 class Dashboard extends Component {
   
   componentDidMount() {
-    this.props.getProjects()
+    this.props.getProjects();
   }
 
   //Dashboard is the parent component, and it can pass props to its child components, such as Projectitem
   //However, child component CANOT pass props to its parent component
   render() {
 
-    const {projects} = this.props.project
+    const {projects} = this.props.project;
 
     return (
 
@@ -28,6 +28,7 @@ class Dashboard extends Component {
                 <CreateProjectButton />
                 <br />
                 <hr />
+                
                 {projects.map(project => (
                   <Projectitem key = {project.id} project = {project} />
                 ))              

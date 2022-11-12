@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import project from "../Dashboard"
 import { Link } from "react-router-dom";
 
 class Projectitem extends Component {
   render() {
-    //extract project from Dashbaord
-    const { project } = this.props;
+    
+    const {project} = this.props;
+
     return (
       <div className="container">
         <div className="card card-body bf-light mb-3">
@@ -25,7 +25,7 @@ class Projectitem extends Component {
                   </li>
                 </a>
 
-                <Link to={`/updateProject/${project.projectIdentifier}`}> 
+                <Link to={`/updateProject/${project.projectIdentifier}`}>
                   <li className="list-group-item update">
                     <i className="fa fa-edit pr-1">Update Project Info</i>
                   </li>
@@ -35,7 +35,7 @@ class Projectitem extends Component {
                   <li className="list-group-item delete">
                     <i className="fa fa-minus-circle pr-1">Delete Project</i>
                   </li>
-                </a>  
+                </a>
               </ul>
             </div>
           </div>

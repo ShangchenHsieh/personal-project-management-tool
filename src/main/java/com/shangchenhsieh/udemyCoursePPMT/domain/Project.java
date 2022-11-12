@@ -7,6 +7,9 @@ import javax.persistence.*;
 //***ISSUE***
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import org.springframework.web.servlet.FlashMapManager;
+
 import java.util.Date;
 
 @Entity
@@ -21,9 +24,11 @@ public class Project {
     @NotBlank(message = "Project identifier is required")
     @Size(min = 4, max = 5, message = "Please use 4 or 5 characters")
     @Column(updatable = false, unique = true)
-    //the unique constrain happens after the MpaValidationErrorService, and it happens on the DB-level
-    //so when sending a POST request with the same projectIdentifier wouldn't be checked
-    //as a result, exception handling is needed here
+    // the unique constrain happens after the MpaValidationErrorService, and it
+    // happens on the DB-level
+    // so when sending a POST request with the same projectIdentifier wouldn't be
+    // checked
+    // as a result, exception handling is needed here
     private String projectIdentifier;
 
     @NotBlank(message = "Project description is required")
@@ -36,11 +41,11 @@ public class Project {
     private Date endDate;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
+    @Column(updatable = false)
     private Date createdAt;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedAt;
-
 
     public Project() {
 
@@ -110,11 +115,11 @@ public class Project {
         this.updatedAt = updatedAt;
     }
 
-
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
     }
+
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = new Date();
