@@ -7,6 +7,7 @@ import AddProject from './components/Projects/AddProject';
 import Header from './components/Layout/Header';
 import {Provider} from "react-redux";
 import store from "./store"
+import React, { Component }  from 'react';
 
 function App() {
   return (
