@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.web.servlet.FlashMapManager;
-
 import java.util.Date;
 
 @Entity
