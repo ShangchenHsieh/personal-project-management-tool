@@ -1,20 +1,17 @@
 package com.shangchenhsieh.udemyCoursePPMT.controller;
 
 import com.shangchenhsieh.udemyCoursePPMT.domain.Project;
-import com.shangchenhsieh.udemyCoursePPMT.exceptions.ProjectIdException;
+
 import com.shangchenhsieh.udemyCoursePPMT.services.MapValidationErrorService;
 import com.shangchenhsieh.udemyCoursePPMT.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/project")

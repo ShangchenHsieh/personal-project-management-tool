@@ -1,9 +1,24 @@
 import React, { Component } from 'react'
 import CreateProjectButton from './Projects/CreateProjectButton';
 import Projectitem from './Projects/Projectitem';
+import { connect } from "react-redux";
+import { getProjects } from "../actions/projectActions"
+import PropTypes from "prop-types"
+
 class Dashboard extends Component {
+  
+  componentDidMount() {
+    this.props.getProjects()
+  }
+
+  //Dashboard is the parent component, and it can pass props to its child components, such as Projectitem
+  //However, child component CANOT pass props to its parent component
   render() {
+
+    const {projects} = this.props.project
+
     return (
+
         <div className="projects">
           <div className="container">
             <div className="row">
@@ -13,7 +28,11 @@ class Dashboard extends Component {
                 <CreateProjectButton />
                 <br />
                 <hr />
-                <Projectitem />
+                {projects.map(project => (
+                  <Projectitem key = {project.id} project = {project} />
+                ))              
+                }
+
               </div>
             </div>
           </div>  
@@ -22,4 +41,13 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+Dashboard.propTypes = {
+  project: PropTypes.object.isRequired,
+  getProjects: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+  project: state.project
+})
+
+export default connect(mapStateToProps, {getProjects})(Dashboard);
