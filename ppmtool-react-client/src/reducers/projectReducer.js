@@ -5,7 +5,7 @@ const initialState = {
   project: {}
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_PROJECTS:
       return {
@@ -18,12 +18,14 @@ export default function(state = initialState, action) {
         ...state,
         project: action.payload
       };
-    
-    case DELETE_PROJECT: 
+
+    case DELETE_PROJECT:
       return {
         ...state,
-        projects: action.payload
-      }
+        projects: state.projects.filter(
+          project => project.projectIdentifier !== action.payload
+        )
+      };
 
     default:
       return state;

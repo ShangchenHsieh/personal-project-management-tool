@@ -29,6 +29,7 @@ class ProjectItem extends Component {
                     <i className="fa fa-flag-checkered pr-1"> Project Board </i>
                   </li>
                 </a>
+                
                 <Link to={`/updateProject/${project.projectIdentifier}`}>
                   <li className="list-group-item update">
                     <i className="fa fa-edit pr-1"> Update Project Info</i>
