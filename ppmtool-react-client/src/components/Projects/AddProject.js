@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProject } from "../../actions/projectActions";
-import classnames from "classname"
+import classnames from "classnames";
 
 class AddProject extends Component {
   constructor() {
@@ -21,10 +21,10 @@ class AddProject extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  //life cycle
+  //life cycle hooks
   componentWillReceiveProps(nextProps) {
-    if(nextProps.errors) {
-      this.setState({errors: nextProps.errors})
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
     }
   }
 
@@ -45,10 +45,10 @@ class AddProject extends Component {
   }
 
   render() {
-    const {errors} = this.state
+    const { errors } = this.state;
+
     return (
       <div>
-      
         <div className="project">
           <div className="container">
             <div className="row">
@@ -68,10 +68,11 @@ class AddProject extends Component {
                       onChange={this.onChange}
                     />
                     {errors.projectName && (
-                      <div className="invalid-feedback">{errors.projectName}</div>
+                      <div className="invalid-feedback">
+                        {errors.projectName}
+                      </div>
                     )}
                   </div>
-
                   <div className="form-group">
                     <input
                       type="text"
@@ -84,7 +85,9 @@ class AddProject extends Component {
                       onChange={this.onChange}
                     />
                     {errors.projectIdentifier && (
-                      <div className="invalid-feedback">{errors.projectIdentifier}</div>
+                      <div className="invalid-feedback">
+                        {errors.projectIdentifier}
+                      </div>
                     )}
                   </div>
                   <div className="form-group">
@@ -96,10 +99,11 @@ class AddProject extends Component {
                       name="description"
                       value={this.state.description}
                       onChange={this.onChange}
-                      
                     />
                     {errors.description && (
-                      <div className="invalid-feedback">{errors.description}</div>
+                      <div className="invalid-feedback">
+                        {errors.description}
+                      </div>
                     )}
                   </div>
                   <h6>Start Date</h6>
@@ -144,9 +148,9 @@ AddProject.propTypes = {
 
 const mapStateToProps = state => ({
   errors: state.errors
-})
+});
 
 export default connect(
-  mapStateToProps ,
+  mapStateToProps,
   { createProject }
 )(AddProject);

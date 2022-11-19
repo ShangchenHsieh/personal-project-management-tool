@@ -36,10 +36,15 @@ export const getProject = (id, history) => async dispatch => {
 };
 
 export const deleteProject = id => async dispatch => {
-  await axios.delete(`/api/project/${id}`)
-  dispatch({
-    type: DELETE_PROJECT,
-    payload: state.projects.filter(project => project.projectIdentifier !== action.payload) 
-    //dynamically get rid of deleted projects w/o refreshing 
-  })
+  if (
+    window.confirm(
+      "Are you sure? This will delete the project and all the data related to it"
+    )
+  ) {
+    await axios.delete(`/api/project/${id}`);
+    dispatch({
+      type: DELETE_PROJECT,
+      payload: id
+    });
+  }
 }

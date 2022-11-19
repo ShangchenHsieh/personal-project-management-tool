@@ -22,9 +22,9 @@ export default function(state = initialState, action) {
     case DELETE_PROJECT: 
       return {
         ...state,
-        project: action.payload
+        projects: action.payload
       }
-      
+
     default:
       return state;
   }
