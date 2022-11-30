@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 
-//***ISSUE***
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -44,6 +43,10 @@ public class Project {
 
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedAt;
+
+    // Project is the owning side of this relationship
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    private Backlog backlog;
 
     public Project() {
 
@@ -121,5 +124,13 @@ public class Project {
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = new Date();
+    }
+
+    public Backlog getBacklog() {
+        return this.backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
     }
 }
