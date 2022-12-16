@@ -53,6 +53,14 @@ public class ProjectTask {
     @JsonIgnore
     private Backlog backlog;
 
+    public Backlog getBacklog() {
+        return this.backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
+
     // Constructor
     public ProjectTask() {
 
@@ -158,7 +166,7 @@ public class ProjectTask {
                 ", status='" + status + '\'' +
                 ", priority=" + priority +
                 ", dueDate=" + dueDate +
-                ", projectIdentifer='" + projectIdentifier + '\'' +
+                ", projectIdentifier='" + projectIdentifier + '\'' +
                 ", create_At=" + createdAt +
                 ", update_At=" + updatedAt +
                 '}';

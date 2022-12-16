@@ -2,10 +2,15 @@ package com.shangchenhsieh.udemyCoursePPMT.domain;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,9 +32,12 @@ public class Backlog {
     @JoinColumn(name = "project_id", nullable = false)
     @JsonIgnore
     private Project project;
-
     // the name of this variable should be exactly the same as the mappedBy inside
     // Project.java
+
+    // OneToMany ProjectTask
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "backlog")
+    private List<ProjectTask> projectTasks = new ArrayList<>();
 
     public Backlog() {
 
@@ -65,5 +73,13 @@ public class Backlog {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public List<ProjectTask> getProjectTasks() {
+        return this.projectTasks;
+    }
+
+    public void setProjectTasks(List<ProjectTask> projectTasks) {
+        this.projectTasks = projectTasks;
     }
 }

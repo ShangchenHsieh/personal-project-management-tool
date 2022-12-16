@@ -1,6 +1,7 @@
 package com.shangchenhsieh.udemyCoursePPMT.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -46,6 +47,7 @@ public class Project {
 
     // Project is the owning side of this relationship
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+
     private Backlog backlog;
 
     public Project() {

@@ -1,4 +1,4 @@
-package com.shangchenhsieh.udemyCoursePPMT.controller;
+package com.shangchenhsieh.udemyCoursePPMT.web;
 
 import com.shangchenhsieh.udemyCoursePPMT.domain.Project;
 
