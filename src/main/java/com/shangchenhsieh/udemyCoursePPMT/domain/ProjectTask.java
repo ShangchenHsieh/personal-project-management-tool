@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
 @Entity
+@Table(name = "ProjectTask")
 public class ProjectTask {
 
     @Id

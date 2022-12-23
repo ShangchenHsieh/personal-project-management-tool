@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@Table(name = "Project")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +48,7 @@ public class Project {
 
     // Project is the owning side of this relationship
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
-
+    @JsonIgnore
     private Backlog backlog;
 
     public Project() {
