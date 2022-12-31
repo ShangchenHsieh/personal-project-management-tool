@@ -13,6 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Project")
 public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
