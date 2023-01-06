@@ -1,10 +1,7 @@
 package com.shangchenhsieh.udemyCoursePPMT.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.shangchenhsieh.udemyCoursePPMT.domain.Backlog;
 import com.shangchenhsieh.udemyCoursePPMT.domain.Project;
@@ -50,8 +47,7 @@ public class ProjectTaskService {
                 projectTask.setStatus("TO_DO");
             }
 
-            if (projectTask.getPriority() == 0) { // In the future we need projectTask.getPriority()== 0 to handle the
-                                                  // form
+            if (projectTask.getPriority() == 0) {
                 projectTask.setPriority(3);
             }
 
