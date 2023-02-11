@@ -48,9 +48,16 @@ public class Project {
     private Date updatedAt;
 
     // Project is the owning side of this relationship
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "project")
     @JsonIgnore
     private Backlog backlog;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private User user;
+
+    private String projectLeader;
+
 
     public Project() {
 
@@ -118,6 +125,22 @@ public class Project {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getProjectLeader() {
+        return this.projectLeader;
+    }
+
+    public void setProjectLeader(String projectLeader) {
+        this.projectLeader = projectLeader;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @PrePersist

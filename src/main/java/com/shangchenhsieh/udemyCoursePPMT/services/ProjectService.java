@@ -2,9 +2,12 @@ package com.shangchenhsieh.udemyCoursePPMT.services;
 
 import com.shangchenhsieh.udemyCoursePPMT.domain.Backlog;
 import com.shangchenhsieh.udemyCoursePPMT.domain.Project;
+import com.shangchenhsieh.udemyCoursePPMT.domain.User;
 import com.shangchenhsieh.udemyCoursePPMT.exceptions.ProjectIdException;
 import com.shangchenhsieh.udemyCoursePPMT.repositories.BacklogRepository;
 import com.shangchenhsieh.udemyCoursePPMT.repositories.ProjectRepository;
+import com.shangchenhsieh.udemyCoursePPMT.repositories.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,27 +20,31 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    public Project saveOrUpdateProject(Project project) {
-        try {
+    @Autowired
+    private UserRepository userRepository;
+
+    public Project saveOrUpdateProject(Project project, String username){
+        try{
+            User user = userRepository.findByUsername(username);
+            project.setUser(user);
+            project.setProjectLeader(user.getUsername());
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
 
-            if (project.getId() == null) {
+            if(project.getId()==null){
                 Backlog backlog = new Backlog();
                 project.setBacklog(backlog);
                 backlog.setProject(project);
                 backlog.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
             }
 
-            if (project.getId() != null) {
-                project.setBacklog(
-                        backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
+            if(project.getId()!=null){
+                project.setBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
             }
 
             return projectRepository.save(project);
 
-        } catch (Exception e) {
-            throw new ProjectIdException(
-                    "Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
+        }catch (Exception e){
+            throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already exists");
         }
 
     }
