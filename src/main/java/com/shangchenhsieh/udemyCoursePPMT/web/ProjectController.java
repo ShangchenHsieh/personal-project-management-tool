@@ -55,10 +55,8 @@ public class ProjectController {
     }
 
     @GetMapping("/all")
-    public Iterable<Project> getAllProjects(Principal principal) {
-        return projectService.findAllProject(principal.getName());
-    }
-
+    public Iterable<Project> getAllProjects(Principal principal){return projectService.findAllProjects(principal.getName());}
+    
     @DeleteMapping("/{projectId}")
     public ResponseEntity<?> deleteProject(@PathVariable String projectId, Principal principal) {
         projectService.deleteProjectByIdentifier(projectId, principal.getName());
