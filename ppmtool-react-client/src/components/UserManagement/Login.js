@@ -28,6 +28,12 @@ class Login extends Component {
     onChange(e) {
       this.setState({ [e.target.name]: e.target.value });
     }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.security.validToken) {
+            this.props.history.push("/dashboard");
+        }
+    }
   
     render() {
       return (
