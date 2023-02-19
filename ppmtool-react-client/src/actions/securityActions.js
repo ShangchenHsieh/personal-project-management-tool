@@ -50,3 +50,12 @@ export const createNewUser = (newUser, history) => async dispatch => {
       });
     }
   };
+
+  export const logout = () => dispatch => {
+    localStorage.removeItem("jwtToken");
+    setJWTToken(false);
+    dispatch({
+      type: SET_CURRENT_USER,
+      payload: {}
+    })
+  }
