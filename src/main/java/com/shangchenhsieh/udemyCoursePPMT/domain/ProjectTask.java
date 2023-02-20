@@ -14,6 +14,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
@@ -44,10 +45,13 @@ public class ProjectTask {
     @Column(updatable = false)
     private String projectIdentifier;
 
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dueDate;
 
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date createdAt;
 
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedAt;
 
     @ManyToOne(fetch = FetchType.EAGER)

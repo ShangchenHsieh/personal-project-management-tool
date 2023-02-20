@@ -42,6 +42,15 @@ class ProjectBoard extends Component {
             </div>
           )
         }
+
+        if(errors.projectIdentifier) {
+          return ( 
+            <div className = "alert alert-danger text-center" role = "alert">
+              {errors.projectIdentifier}
+            </div>
+          )
+        }
+        
         else{
           return (
           <div classname = "alert alert-info text-center" role ="alert">
